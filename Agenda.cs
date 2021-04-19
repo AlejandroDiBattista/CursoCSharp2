@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Linq;
 
 namespace GitHub
@@ -12,6 +11,8 @@ namespace GitHub
             public string Nombre;
             public string Apellido;
             public string Telefono;
+            public int Edad; 
+
             public string NombreCompleto => $"{Apellido}, {Nombre}" ;
         }
 
@@ -27,13 +28,13 @@ namespace GitHub
                 contactos = new List<Contacto>();
                 foreach(var linea in lineas) { 
                     var datos = linea.Split(",");
-                    Agregar( new Contacto{ Nombre = datos[0], Apellido = datos[1], Telefono = datos[2] } );
+                    Agregar( new Contacto{ Nombre = datos[0], Apellido = datos[1], Telefono = datos[2], Edad = int.Parse(datos[3]) } );
                 }
             }
 
             public void Escribir(){
-                var lineas = contactos.Select( c => $"{c.Nombre},{c.Apellido},{c.Telefono}");
-                Console.WriteLine("Escribindo Agenda... {0}",lineas.Count() );
+                var lineas = contactos.Select( c => $"{c.Nombre},{c.Apellido},{c.Telefono},{c.Edad}");
+                Console.WriteLine("Escribiendo Agenda... {0}", lineas.Count() );
                 File.WriteAllLines(@"agenda.txt", lineas);
             }
             
@@ -46,10 +47,12 @@ namespace GitHub
             }
 
             public void Agregar(Contacto contacto){
+                if(contacto == null) return;
                 contactos.Add(contacto);
             }
 
             public void Editar(Contacto contacto, int posicion){
+                if(contacto == null) return;
                 contactos[posicion - 1] = contacto;
             }
             
@@ -60,9 +63,30 @@ namespace GitHub
 
         static Contacto IngresarContacto(){
             var  actual = new Contacto();
-            Console.Write("   Nombre   >> "); actual.Nombre   = Console.ReadLine();
-            Console.Write("   Apellido >> "); actual.Apellido = Console.ReadLine();
-            Console.Write("   Teléfono >> "); actual.Telefono = Console.ReadLine();
+            Console.Write("   Nombre   :> "); actual.Nombre   = Console.ReadLine();
+            Console.Write("   Apellido :> "); actual.Apellido = Console.ReadLine();
+            Console.Write("   Teléfono :> "); actual.Telefono = Console.ReadLine();
+            Console.Write("   Edad     :> "); actual.Edad     = int.Parse(Console.ReadLine());
+            if(actual.Nombre.Length < 2){
+                Console.Write("Debe ingresar un Nombre valido");
+                Console.ReadLine();
+                return null;
+            }
+            if(actual.Apellido.Length < 2){
+                Console.Write("Debe ingresar un Apellido valido");
+                Console.ReadLine();
+                return null;
+            }
+            if(actual.Telefono.Length != 7){
+                Console.Write("Debe ingresar un Telefono valido");
+                Console.ReadLine();
+                return null;
+            }
+            if(actual.Edad < 0 || actual.Edad > 99){
+                Console.Write("Debe ingresar una Edad valida");
+                Console.ReadLine();
+                return null;
+            }
             return actual;
         }
 
@@ -72,8 +96,10 @@ namespace GitHub
             Console.WriteLine();
             Console.WriteLine(" 0. Cancelar");
             while(true){
-                Console.Write(" >> ");
+                Console.Write(" :> ");
                 var opcion = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
                 if(opcion >= 0 & opcion <= 3) {
                     return opcion;
                 }
@@ -102,7 +128,8 @@ namespace GitHub
         static void ListarContactos(){
             Console.WriteLine(" Listado de Contactos...");
             agenda.Listar();
-            Console.Write(" >> "); Console.ReadLine();
+            Console.Write(" :> "); Console.ReadLine();
+            Console.WriteLine();
         }
 
         static Agenda agenda;
@@ -110,15 +137,16 @@ namespace GitHub
         static void Menu(){
             while(true) {
                 Console.WriteLine();
-                Console.WriteLine(" > Mi Agenda");
+                Console.WriteLine(" > Mini Agenda");
                 Console.WriteLine(" 1. Agregar Contacto");
                 Console.WriteLine(" 2. Editar Contacto");
                 Console.WriteLine(" 3. Borrar Contacto");
                 Console.WriteLine(" 4. Listar Contactos");
                 Console.WriteLine();
                 Console.WriteLine(" 0. Terminar");
-                Console.Write(" >> ");
+                Console.Write(" :> ");
                 var opcion = int.Parse(Console.ReadLine());
+                Console.WriteLine();
                 switch(opcion){
                     case 1: 
                         AgregarContacto();
@@ -134,7 +162,6 @@ namespace GitHub
                         break;
                     case 0 :
                         return;
-                        break;
                 }
             } 
         }

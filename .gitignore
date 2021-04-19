@@ -1,0 +1,10 @@
+bin/*
+obj/*
+scriptcs_bin/*
+.vscode/*
+*.dll
+*.exe
+*.pdb
+*.props
+*.targets
+*.cache
