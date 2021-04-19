@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace GitHub
+namespace Demo01
 {
     class Program
     {
@@ -41,7 +41,7 @@ namespace GitHub
             public void Listar(){
                 var i = 1;
                 foreach(var contacto in contactos){
-                    Console.WriteLine($" {i}. {contacto.NombreCompleto,-30}  {contacto.Telefono}");
+                    Console.WriteLine($" {i}. {contacto.NombreCompleto,-30} | {contacto.Telefono} | {contacto.Edad:##0} años");
                     i++;
                 }
             }
@@ -77,7 +77,7 @@ namespace GitHub
                 Console.ReadLine();
                 return null;
             }
-            if(actual.Telefono.Length != 7){
+            if(actual.Telefono.Length < 7){
                 Console.Write("Debe ingresar un Telefono valido");
                 Console.ReadLine();
                 return null;
@@ -145,22 +145,23 @@ namespace GitHub
                 Console.WriteLine();
                 Console.WriteLine(" 0. Terminar");
                 Console.Write(" :> ");
-                var opcion = int.Parse(Console.ReadLine());
+                var opcion = Console.ReadLine();
                 Console.WriteLine();
                 switch(opcion){
-                    case 1: 
+                    case "1": 
                         AgregarContacto();
                         break;
-                    case 2:
+                    case "2":
                         EditarContacto();
                         break;
-                    case 3:
+                    case "3":
                         BorrarContacto();
                         break;
-                    case 4:
+                    case "4":
                         ListarContactos();
                         break;
-                    case 0 :
+                    case "0":
+                    case "" :
                         return;
                 }
             } 
