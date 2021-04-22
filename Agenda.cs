@@ -28,11 +28,26 @@ namespace Demo01
                 contactos = new List<Contacto>();
                 foreach(var linea in lineas) { 
                     var datos = linea.Split(",");
-                    Agregar( new Contacto{ Nombre = datos[0], Apellido = datos[1], Telefono = datos[2], Edad = int.Parse(datos[3]) } );
+                    var nombre   = datos[0];
+                    var apellido = datos[1];
+                    var telefono = datos[2];
+                    var edades   = int.Parse(datos[3]);
+                    var contacto = new Contacto{ Nombre = nombre, Apellido = apellido, Telefono = telefono, Edad = edades };
+                    Agregar( contacto  );
                 }
             }
 
             public void Escribir(){
+                for(var i = 0 ; i < contactos.Count; i++){
+                    var item = contactos[i];
+
+                }
+
+                foreach(var item in contactos){
+
+                }
+                contactos.ForEach( item => "");
+
                 var lineas = contactos.Select( c => $"{c.Nombre},{c.Apellido},{c.Telefono},{c.Edad}");
                 Console.WriteLine("Escribiendo Agenda... {0}", lineas.Count() );
                 File.WriteAllLines(@"agenda.txt", lineas);
@@ -58,6 +73,10 @@ namespace Demo01
             
             public void Borrar(int posicion){
                 contactos.Remove( contactos[posicion - 1] );
+            }
+
+            public int Cantidad(){
+                return contactos.Count;
             }
         }
 
@@ -95,15 +114,9 @@ namespace Demo01
             agenda.Listar();
             Console.WriteLine();
             Console.WriteLine(" 0. Cancelar");
-            while(true){
-                Console.Write(" :> ");
-                var opcion = int.Parse(Console.ReadLine());
-                Console.WriteLine();
-
-                if(opcion >= 0 & opcion <= 3) {
-                    return opcion;
-                }
-            }
+            Console.Write(" :> ");
+            var opcion = int.Parse(Console.ReadLine());
+            return opcion;
         }
 
         static void AgregarContacto(){
