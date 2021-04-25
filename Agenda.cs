@@ -11,7 +11,6 @@ namespace Demo01 {
             public string Nombre {get; set; }
             public string Apellido;
             public string Telefono;
-            public int Edad;
     
             public string NombreCompleto => $"{Apellido}, {Nombre}" ;
         }
@@ -28,25 +27,22 @@ namespace Demo01 {
                 contactos = new List<Contacto>();
                 foreach(var linea in lineas) { 
                     var datos = linea.Split(",");
-                    var nombre   = datos[0];
-                    var apellido = datos[1];
-                    var telefono = datos[2];
-                    var edad     = int.Parse(datos[3]);
-                    var contacto = new Contacto{ Nombre = nombre, Apellido = apellido, Telefono = telefono, Edad = edad };
+                    var contacto = new Contacto{ Nombre = datos[0], Apellido = datos[1], Telefono = datos[2]};
                     Agregar( contacto  );
                 }
             }
 
             public void Escribir() {
-                var lineas = contactos.Select( c => $"{c.Nombre},{c.Apellido},{c.Telefono},{c.Edad}");
+                var lineas = contactos.Select( c => $"{c.Nombre},{c.Apellido},{c.Telefono}");
                 WriteLine($"Escribiendo Agenda... {lineas.Count()}" );
                 File.WriteAllLines(@"agenda.txt", lineas);
             }
             
             public void Listar() {
                 var i = 1;
+                WriteLine($"      {"NOMBRE",-40}  {"TELÉFONO"}");
                 foreach(var contacto in contactos) {
-                    WriteLine($" {i++}. {contacto.NombreCompleto,-40} | {contacto.Telefono} | {contacto.Edad:##0} años");
+                    WriteLine($" {i++,3}. {contacto.NombreCompleto,-40}  {contacto.Telefono}");
                 }
             }
 
@@ -70,32 +66,25 @@ namespace Demo01 {
             Write("   Nombre   :> "); actual.Nombre   = ReadLine();
             Write("   Apellido :> "); actual.Apellido = ReadLine();
             Write("   Teléfono :> "); actual.Telefono = ReadLine();
-            Write("   Edad     :> "); actual.Edad     = int.Parse(ReadLine());
             
             if(actual.Nombre.Length < 2) {
-                Write("Debe ingresar un Nombre valido");
+                Write("Debe ingresar un Nombre válido");
                 ReadLine();
                 return null;
             }
             
             if(actual.Apellido.Length < 2) {
-                Write("Debe ingresar un Apellido valido");
+                Write("Debe ingresar un Apellido válido");
                 ReadLine();
                 return null;
             }
             
             if(actual.Telefono.Length < 7) {
-                Write("Debe ingresar un Telefono valido");
+                Write("Debe ingresar un Telefono válido");
                 ReadLine();
                 return null;
             }
 
-            if(actual.Edad < 0 || actual.Edad > 99) {
-                Write("Debe ingresar una Edad valida");
-                ReadLine();
-                return null;
-            }
-            
             return actual;
         }
 
@@ -139,8 +128,9 @@ namespace Demo01 {
 
         static void Menu() {
             while(true) {
+                Clear();
                 WriteLine();
-                WriteLine(" > Mini Agenda");
+                WriteLine(" >  MI AGENDA");
                 WriteLine(" 1. Agregar Contacto");
                 WriteLine(" 2. Editar Contacto");
                 WriteLine(" 3. Borrar Contacto");
