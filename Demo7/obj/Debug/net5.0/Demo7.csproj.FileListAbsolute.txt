@@ -1,0 +1,16 @@
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\Demo7.exe
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\Demo7.deps.json
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\Demo7.runtimeconfig.json
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\Demo7.runtimeconfig.dev.json
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\Demo7.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\ref\Demo7.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\bin\Debug\net5.0\Demo7.pdb
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.csprojAssemblyReference.cache
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.AssemblyInfoInputs.cache
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.AssemblyInfo.cs
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.csproj.CoreCompileInputs.cache
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\ref\Demo7.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.pdb
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo7\obj\Debug\net5.0\Demo7.genruntimeconfig.cache

@@ -2,7 +2,7 @@
 
 namespace Demo2
 {
-    class Program
+    class Programa
     {
         static void Main(string[] args)
         {

@@ -1,63 +1,38 @@
 using System;
+using System.Collections.Generic;
+
 namespace Demo3 {
-    public class Agenda{
-        private Persona[] personas = new Persona[100];
-        private int cantidad = 0;
+//     public class Agenda {
+//         private List<Persona> personas = new List<Persona>();
 
-        public void Agregar(Persona contacto){
-            for(var i = 0; i < cantidad; i++){
-                if(personas[i].ID == contacto.ID){
-                    personas[i] = contacto;
-                    return;
-                }
-            }
-            personas[cantidad++] = contacto;
-        }
+//         public void Agregar(Persona contacto) {
+//             if(! Existe(contacto)){
+//                 personas.Add(contacto);
+//             }
+//         }
 
-        public void Cambiar(Persona contacto){
-            for(var i = 0; i < cantidad; i++){
-                if(personas[i].ID == contacto.ID){
-                    personas[i] = contacto;
-                    return;
-                }
-            }
-        }
+//         public void Cambiar(Persona contacto) {
+//             Borrar(contacto);
+//             Agregar(contacto);
+//         }
 
-        public void Borrar(Persona contacto){
-            for(var i = 0; i < cantidad; i++){
-                if(personas[i].ID == contacto.ID){
-                    personas[i] = null;
-                    return;
-                }
-            }
-            Compactar();
-        }
+//         public void Borrar(Persona contacto) {
+//             if (personas.Exists(p => p.ID == contacto.ID)) {
+//                 personas.RemoveAt(personas.FindIndex(p => p.ID == contacto.ID));
+//             }
+//         }
 
-        public Persona Buscar(string texto){
-            for(var i = 0; i < cantidad; i++){
-                if(personas[i].Contiene(texto)){
-                    return personas[i];
-                }
-            }
-            return null; 
-        }
+//         public Persona Buscar(string texto) {
+//             return personas.Find(persona => persona.Contiene(texto));
+//         }
 
-        public void Mostrar(){
-            Console.WriteLine($"Hay {cantidad} personas en la agenda");
-            for(var i = 0; i < cantidad; i++){
-                personas[i].Mostrar();
-            }
-        }
-        private void Compactar(){
-            var j = 0;
-            for(var i = 0; i < cantidad; i++){
-                if(personas[i] != null){
-                    personas[j++] = personas[i];
-                }
-            }
-            cantidad = j;
-        }
+//         private bool Existe(Persona contacto) {
+//             return personas.Exists(p => p.ID == contacto.ID);
+//         }
 
-    }
+//         public void Mostrar() {
+//             Console.WriteLine($"Hay {personas.Count} personas en la Agenda");
+//             personas.ForEach(persona => persona.Mostrar());
+//         }
+//     }
 }
-
