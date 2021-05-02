@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo8\\Demo8.csproj": {}
+    "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo10\\Demo10.csproj": {}
   },
   "projects": {
-    "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo8\\Demo8.csproj": {
+    "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo10\\Demo10.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo8\\Demo8.csproj",
-        "projectName": "Demo8",
-        "projectPath": "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo8\\Demo8.csproj",
+        "projectUniqueName": "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo10\\Demo10.csproj",
+        "projectName": "Demo10",
+        "projectPath": "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo10\\Demo10.csproj",
         "packagesPath": "C:\\Users\\administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo8\\obj\\",
+        "outputPath": "C:\\Users\\administrator\\Documents\\GitHub\\CursoCSharp2\\demo10\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

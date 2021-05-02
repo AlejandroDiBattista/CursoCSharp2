@@ -1,0 +1,16 @@
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.csprojAssemblyReference.cache
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.AssemblyInfoInputs.cache
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.AssemblyInfo.cs
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.csproj.CoreCompileInputs.cache
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\Demo9.exe
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\Demo9.deps.json
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\Demo9.runtimeconfig.json
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\Demo9.runtimeconfig.dev.json
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\Demo9.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\ref\Demo9.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\bin\Debug\net5.0\Demo9.pdb
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\ref\Demo9.dll
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.pdb
+C:\Users\administrator\Documents\GitHub\CursoCSharp2\Demo9\obj\Debug\net5.0\Demo9.genruntimeconfig.cache
