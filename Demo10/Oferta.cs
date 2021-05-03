@@ -1,6 +1,6 @@
-namespace Demo10
-{
-    public class Oferta : IVendible{
+namespace Demo10 {
+    
+    public class Oferta: IVendible {
         IVendible venta;
 
          public Oferta(Producto producto, int cantidad){
@@ -15,9 +15,5 @@ namespace Demo10
 
         public virtual double Importe => venta.Importe;
         public override string ToString() => venta.ToString();
-
-
-
-        
     }
 }

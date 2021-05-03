@@ -1,5 +1,4 @@
-namespace Demo10
-{
+namespace Demo10 {
     public class Venta : IVendible {
         public Producto Producto { get; init; }
         public int Cantidad { get; init; }

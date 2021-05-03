@@ -1,4 +1,5 @@
 namespace Demo10 {
+    
     public class Producto {
         public string Descripcion { get; init; }
         public double Precio { get; init;}
