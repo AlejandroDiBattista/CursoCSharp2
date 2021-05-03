@@ -2,7 +2,11 @@
 
 namespace Demo9 {
 
+    // Este ejemplo muestra como delegar las responsabilidades entre varios
+    // clases de manera que cada una se enfoque en un solo aspecto del problemas.
+
     class Program {
+
         static void Main(string[] args) {
             Mensajes.Bienvenido();
 
@@ -12,7 +16,6 @@ namespace Demo9 {
                 Mensajes.Despedida();
                 return;
             }
-            Console.WriteLine($"Persona : {usuario, 50}");
             Mensajes.MostrarCuenta(usuario);
             
             Mensajes.Despedida();
