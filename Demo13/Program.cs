@@ -6,10 +6,10 @@ namespace Demo13
         public string Descripcion { get;set;}
         public double Precio { get; set;}
     }
+
     delegate double CalculadorImporte(double precio, int cantidad);
 
-
-    class Venta {
+    class Venta { // Usa delegado para generalizar el calculo de los importes de la venta. 
         CalculadorImporte calculador;
         Producto producto;
         int cantidad;
@@ -25,9 +25,7 @@ namespace Demo13
         }
     }
 
-
-    class Program
-    {
+    class Program {
         delegate void Mostrador(int x);
 
 
@@ -42,10 +40,14 @@ namespace Demo13
             return precio * cantidad * 0.8;
         }
 
-        static double Robo(double precio, int cantidad) => precio * cantidad * 2;
+        // Robo0 a Robo2 son exactamente mismo, solo cambia la sintaxis 
+        static double Robo0(double precio, int cantidad){
+            return precio * cantidad * 2;
+        }
+
+        static double Robo1(double precio, int cantidad) => precio * cantidad * 2;
 
         static CalculadorImporte Robo2 = (p, c) => p * c * 2;
-
 
         static void Main(string[] args)
         {
@@ -57,8 +59,12 @@ namespace Demo13
             var v2 = new Venta(coca, 100, Descuento20);
             Console.WriteLine($"El importe es {v2.Importe()}");
 
-            var v3 = new Venta(coca, 100, (p, c) => p * c *2);
-        //    var v3 = new Venta(coca, 100, Robo2);
+            // v3 a v5 hacen exactamente lo mismo... solo usan diferentes sintasis
+            var v3 = new Venta(coca, 100, Robo0);
+            var v4 = new Venta(coca, 100, Robo1);
+            var v4 = new Venta(coca, 100, Robo2);
+            var v5 = new Venta(coca, 100, (p, c) => p * c * 2);
+
             Console.WriteLine($"El importe es {v3.Importe()}");
 
         }
