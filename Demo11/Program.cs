@@ -133,10 +133,12 @@ namespace Demo11
         }
     }
 
-    class Program
-    {
+    class Program {
+        // Ejemplo de uso de interface para delegar funcionalidad
+        // Padron: Decorador 
+
         static void Mostrar(IVendible venta){
-            Console.WriteLine($" El importe es {venta.Importe}");
+            Console.WriteLine($"El importe es {venta.Importe}");
         }
 
         static void Main(string[] args)
