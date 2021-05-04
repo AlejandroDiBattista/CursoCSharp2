@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Demo14 {
@@ -95,7 +95,7 @@ namespace Demo14 {
             b.Agregar(35);
 
             var c = new Pares(a);
-            b.Unir(c).Filtrar( (x) => { return x % 5 == 0;}).Mostrar();
+            // b.Unir(c).Filtrar( (x) => { return x % 5 == 0;}).Mostrar();
 
             var mm = GenerarMostrar(100);
             mm(1);
@@ -104,3 +104,4 @@ namespace Demo14 {
         }
     }
 }
+

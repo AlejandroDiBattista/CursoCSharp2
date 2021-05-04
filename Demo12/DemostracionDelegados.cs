@@ -23,11 +23,13 @@ namespace Demo12{
             Mostrar b = Repetir(a, 3);
             Mostrar c = (x) => b(x + 1);
 
-            MostrarDoble(1);
-            a(10);
-            b(100);
-            c(1000);
+            MostrarDoble(1);    //El doble de 1 es 2
+            a(10);              //El doble de 10 es 20 
+            b(100);             //Repetir 3 veces;;El doble de 100 es 200;;El doble de 100 es 200;;El doble de 100 es 200;;
+            c(1000);            //Repetir 3 veces;;El doble de 1000 es 2000;;El doble de 1000 es 2000;;El doble de 1000 es 2000;;
         }
 
+        //a(10)  equivale a MostrarDoble(10)
+        //b(100) equivale a Repetir(MostrarDoble,3) 
     }
 }

@@ -62,8 +62,8 @@ namespace Demo13
             // v3 a v5 hacen exactamente lo mismo... solo usan diferentes sintasis
             var v3 = new Venta(coca, 100, Robo0);
             var v4 = new Venta(coca, 100, Robo1);
-            var v4 = new Venta(coca, 100, Robo2);
-            var v5 = new Venta(coca, 100, (p, c) => p * c * 2);
+            var v5 = new Venta(coca, 100, Robo2);
+            var v6 = new Venta(coca, 100, (p, c) => p * c * 2);
 
             Console.WriteLine($"El importe es {v3.Importe()}");
 
