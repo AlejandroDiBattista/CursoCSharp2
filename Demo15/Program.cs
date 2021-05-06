@@ -1,5 +1,4 @@
-﻿```
-using System;
+﻿using System;
 class Programa {
     delegate void Mostrar(int valor);                       // 1 
 
@@ -13,4 +12,3 @@ class Programa {
         mostrar(20);                                        // 6
     }
 }
-```
