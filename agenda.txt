@@ -1,7 +1,7 @@
 Oscar,Cabanillas,(381) 586-3692
 Alvaro,Deguer,(381) 303-7361
 Ignacio,Graneros,(381) 580-9608
-Nahuelazo,Colorado,(381) 123-4567
+Nahuel,Rojas,(381) 601-9782
 Franco,Cabezas,(381) 670-1012
 Alejandro,Castelbianchi,(381) 547-3368
 Alejandro,Di Battista,(381) 534-3458
