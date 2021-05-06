@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
-namespace Demo01 {
+namespace Demo1 {
 
-    class Program {
+    class DemoMiAgenda {
 
         public class Contacto {
             public string Nombre {get; set; }
@@ -40,9 +40,9 @@ namespace Demo01 {
             
             public void Listar() {
                 var i = 1;
-                WriteLine($"      {"NOMBRE",-40}  {"TELÉFONO"}");
+                // WriteLine($"     {"NOMBRE",-40}  {"TELÉFONO"}");
                 foreach(var contacto in contactos) {
-                    WriteLine($" {i++,3}. {contacto.NombreCompleto,-40}  {contacto.Telefono}");
+                    WriteLine($" {i++,2}. {contacto.NombreCompleto,-40}  {contacto.Telefono}");
                 }
             }
 
@@ -92,7 +92,7 @@ namespace Demo01 {
             WriteLine(" > Elegir contacto");
             agenda.Listar();
             WriteLine();
-            WriteLine(" 0. Cancelar");
+            WriteLine("  0. Cancelar");
             Write(" :> ");
             var opcion = int.Parse(ReadLine());
             return opcion;
@@ -130,13 +130,13 @@ namespace Demo01 {
             while(true) {
                 Clear();
                 WriteLine();
-                WriteLine(" >  MI AGENDA");
-                WriteLine(" 1. Agregar Contacto");
-                WriteLine(" 2. Editar Contacto");
-                WriteLine(" 3. Borrar Contacto");
-                WriteLine(" 4. Listar Contactos");
+                WriteLine(" > MI AGENDA");
+                WriteLine("  1. Agregar Contacto");
+                WriteLine("  2. Editar Contacto");
+                WriteLine("  3. Borrar Contacto");
+                WriteLine("  4. Listar Contactos");
                 WriteLine();
-                WriteLine(" 0. Terminar");
+                WriteLine("  0. Terminar");
                 Write(" :> ");
                 var opcion = ReadLine();
                 WriteLine();

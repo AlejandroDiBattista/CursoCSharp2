@@ -1,6 +1,7 @@
-bin/*
-obj/*
-scriptcs_bin/*
+*/bin/*
+*/obj/*
+*/Debug/*
+*/scriptcs_bin/*
 .vscode/*
 *.dll
 *.exe
