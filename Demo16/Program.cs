@@ -35,9 +35,9 @@ namespace Demo16 {
     partial struct Precio: IComparable<Precio> {
         public int CompareTo(Precio b) => Equals(b) ? 0 : Valor.CompareTo(b.Valor);
 
-        public static bool operator < (Precio a, Precio b) => a.CompareTo(b) < 0;
+        public static bool operator <  (Precio a, Precio b) => a.CompareTo(b) < 0;
         public static bool operator <= (Precio a, Precio b) => !(a > b);
-        public static bool operator > (Precio a, Precio b) => a.CompareTo(b) > 0;
+        public static bool operator >  (Precio a, Precio b) => a.CompareTo(b) > 0;
         public static bool operator >= (Precio a, Precio b) => !(a < b);
     }
 
