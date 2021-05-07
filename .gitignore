@@ -2,7 +2,7 @@
 */obj/*
 */Debug/*
 */scriptcs_bin/*
-.vscode/*
+*/.vscode/*
 *.dll
 *.exe
 *.pdb
