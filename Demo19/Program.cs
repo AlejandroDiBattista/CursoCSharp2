@@ -43,7 +43,7 @@ namespace Demo19{
             a.Agregar( new("Hugo",      456_7893) );
             a.Agregar( new("Nahuel",    456_7892) );
 
-            Console.WriteLine("\nRecorrido normal");
+            Console.WriteLine("\nRecorrido Normal");
             foreach(var c in a) 
                 Console.WriteLine($"- {c.Nombre,-20} {c.Telefono}") ;
             
@@ -53,7 +53,7 @@ namespace Demo19{
 
             a.OrderBy(c => c.Nombre).ForEach( c=> Console.WriteLine($"- {c.Nombre,-20} {c.Telefono}") );
 
-            Console.WriteLine("\nRecorrido Ordenado (Telefono)");
+            Console.WriteLine("\nRecorrido Ordenado (Teléfono)");
             foreach(var c in a.OrderBy(c => c.Telefono))
                 Console.WriteLine($"- {c.Nombre,-20} {c.Telefono}") ;
 
