@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using SimpleInjector;
 
 namespace Demo23 {
@@ -22,7 +21,6 @@ namespace Demo23 {
             this.GetType().GetProperties().Where(p => p.Name != "ID").Select(c => (c.Name, c.GetValue(this))); 
         string IEntidad.Tabla => this.GetType().Name;
     }
-
     
     class Producto : Entidad {
         public string Descripcion {get; set;}
@@ -41,24 +39,26 @@ namespace Demo23 {
     }
 
     interface IDatos {
-        void Ejecutar(string SQL);
+        object Ejecutar(string SQL);
     }
 
     class SQLServer: IDatos {
-        public void Ejecutar(string SQL) {
+        public object Ejecutar(string SQL) {
             Console.Write($"Ejecutando SQL Server: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(SQL);
             Console.ForegroundColor = ConsoleColor.White;
+            return null;
         }
     } 
 
     class Mongo: IDatos {
-        public void Ejecutar(string SQL) {
+        public object Ejecutar(string SQL) {
             Console.Write($"Ejecutando Mongo: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(SQL);
             Console.ForegroundColor = ConsoleColor.White;
+            return null;
         }
     } 
 
@@ -78,16 +78,39 @@ namespace Demo23 {
 
         public T ReadOne(Guid ID) {
             var salida = new T();
-            Datos.Ejecutar($"SELECT * FROM { salida.Tabla } WHERE ID = '{ID};");
-            return default;
+            var objeto = Datos.Ejecutar($"SELECT * FROM { salida.Tabla } WHERE ID = '{ID};");
+            foreach(var c in salida.GetType().GetProperties()){
+                c.SetValue(salida, c.GetValue(objeto));
+            }
+            return salida;
         }
 
         public IEnumerable<T> ReadAll() {
             var salida = new T();
             Datos.Ejecutar($"SELECT * FROM { salida.Tabla };");
+            // SIN IMPLEMENTAR
             return new List<T>();
         }
     }
+
+    class ReaderCache<T>: IReader<T> where T: IEntidad, new() {
+        IReader<T> Datos;
+        public ReaderCache(IReader<T> datos) => Datos = datos;
+        
+        private T One;
+        private IEnumerable<T> All;
+
+        public T ReadOne(Guid ID) {
+            One ??= Datos.ReadOne(ID);
+            return One;
+        }
+
+        public IEnumerable<T> ReadAll() {
+            All ??= Datos.ReadAll();
+            return All;
+        }
+    }
+
 
     class Writer<T>: IWriter<T> where T: IEntidad {
         IDatos Datos;
@@ -109,6 +132,7 @@ namespace Demo23 {
 
         public void Delete(T p) => Datos.Ejecutar($"DELETE { p.Tabla } ID = '{ p.ID }';");
     }
+
     interface IStore<T>: IReader<T>, IWriter<T> where T : IEntidad { }
 
     class Store<T>: IStore<T> where T: IEntidad {
@@ -165,14 +189,14 @@ namespace Demo23 {
     }
 
     class DatosTest: IDatos {
-        public void Ejecutar(string SQL){
+        public object Ejecutar(string SQL){
             Console.Write($"Ejecutando Test: ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(SQL);
             Console.ForegroundColor = ConsoleColor.White;
+            return null;
         } 
     } 
-
 
     // ** Inicialización tradicional **
     // var s = new DatosTest();
@@ -180,17 +204,19 @@ namespace Demo23 {
     // IWriter<Producto> w = new Writer<Producto>(s);
     // w = new WriteLog(w);
     // w = new WriterTest(w);
-
     // var store  = new Store<Producto>(r, w);
-
 
     class Program {
         static void Main(string[] args) {
 
             var contenedor = new SimpleInjector.Container();
             contenedor.Register<IDatos, DatosTest>(Lifestyle.Singleton);
+            // contenedor.Register<IDatos, SQLServer>(Lifestyle.Singleton);
+            // contenedor.Register<IDatos, Mongo>(Lifestyle.Singleton);
+
             contenedor.Register<IStore<Producto>, Store<Producto>>();
             contenedor.Register<IReader<Producto>, Reader<Producto>>();
+            
             contenedor.Register<IWriter<Producto>, Writer<Producto>>();
             // contenedor.RegisterDecorator<IWriter<Producto>, WriterTest<Producto>>();     // Comentar/Descomentar para probar el decorador
             // contenedor.RegisterDecorator<IWriter<Producto>, WriterLog<Producto>>();      // Comentar/Descomentar para probar el decorador
@@ -198,8 +224,8 @@ namespace Demo23 {
 
             Console.Clear();
             Console.WriteLine("Ejemplos de Segregacion de interfaces (y Single Responsabiliti, Open/Close, Dependence Injection)");
-            var inventario = contenedor.GetInstance<Inventario>();
-            
+
+            var inventario = contenedor.GetInstance<Inventario>();  // <= Realiza automaticamente la creacion de todas las instancias 
             inventario.Add(new(Guid.Empty,     "Coca Cola", 100));
             inventario.Add(new(Guid.NewGuid(), "Pepsi Cola", 80));
             inventario.Add(new(Guid.Empty,     "Manao Cola", 40));
