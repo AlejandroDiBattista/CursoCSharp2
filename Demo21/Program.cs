@@ -4,77 +4,51 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Demo21 {
-    static class Extensiones {
-        public static void ForEach<T>(this IEnumerable<T> e, Action<T> accion){
-            foreach(var a in e)
-                accion(a);
-        }
-    }
+    record Producto(string Descripcion, double Precio);
 
-    record Contacto(string Nombre, int Telefono);
+    class Inventario : IEnumerable<Producto>{
+        List<Producto> productos = new();
+        
+        public void Agregar(Producto producto) => productos.Add(producto);
 
-    class Agenda: IEnumerable<Contacto> {
-        Contacto Dato;
-        Agenda Menor, Mayor;
+        public IEnumerable<Producto> Todos() => productos;
 
-        public void Agregar(Contacto c){
-            var a = this;
-            while(a.Dato != null){
-                if(c.Nombre.CompareTo(a.Dato.Nombre) < 0){
-                    a.Menor ??= new();
-                    a = a.Menor;
-                } else {
-                    a.Mayor ??= new();
-                    a = a.Mayor;
-                }
-            }
-            a.Dato = c;
-        }
-
-        public void AgregarR(Contacto c){
-            if(Dato == null) {
-                Dato = c;
-            } else if(c.Nombre.CompareTo(Dato.Nombre) < 0){
-                Menor ??= new();
-                Menor.AgregarR(c);
-            } else {
-                Mayor ??= new();
-                Mayor.AgregarR(c);
+        public IEnumerator<Producto> GetEnumerator() {
+            foreach(var x in productos){
+                yield return x;
             }
         }
 
-        public IEnumerator<Contacto> GetEnumerator() {
-            var q = new Stack<Agenda>();
-            var a = this;
-            while(q.Count > 0 || a != null) {
-                if(a != null) {
-                    q.Push(a);
-                    a = a.Menor;
-                } else {
-                    a = q.Pop();
-                    if(a.Dato != null) yield return a.Dato;
-                    a = a.Mayor;
-                }
-            } 
+        IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
+    
+        public static Producto Crear(string Descripcion, double Precio) {
+            Console.WriteLine("Holis");
+            return new(Descripcion, Precio);
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    }
+    }    
 
+    static class Extenciones  {
+
+        public static void ForEach<T>(this IEnumerable<T> enumeracion, Action<T> accion) {
+            foreach(var p in enumeracion)
+                accion(p);
+        }
+    } 
     class Program {
         static void Main(string[] args) {
-            var a = new Agenda();
-            a.Agregar( new("Marcelo",  1001) );
-            a.Agregar( new("Alejadro", 1002) );
-            a.Agregar( new("Carlos",   1003) );
-            a.Agregar( new("Enrique",  1004) );
-            a.Agregar( new("Juan",     1005) );
+            var inventario = new Inventario();
+            inventario.Agregar( new Producto("Coca", 100));
+            inventario.Agregar( new("Pepsi", 80));
+            inventario.Agregar( new("Manao", 40));
 
-            Console.WriteLine($"{a.Count()}");
+            // foreach(var p in inventario){
+            //     Console.WriteLine($"{p}");
+            // }
 
-            a.Where(c => c.Telefono > 1002)
-                // .OrderByDescending(c => c.Telefono)
-                .ForEach( c => Console.WriteLine($"{c.Nombre,-20} {c.Telefono}") );
+           inventario.ForEach( p => Console.WriteLine($"{p}"));
+            // Extenciones.ForEach(inventario, p => Console.WriteLine($"{p}"));
+
         }
     }
 }
